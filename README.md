@@ -1,7 +1,70 @@
-Overview
+Airflow Starter Kit
 ========
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+This is a starter kit for executing scheduled dbt runs (Bolt schedules) within Apache Airflow. For ease of deployment, this project uses Astronomer.io to manage Apache Airflow
+
+## Instructions
+
+1: Within Paradime, generage a new API key by clicking "Generate API Key" in the [Paradime account settings](https://app.paradime.io/account-settings/workspace)
+
+Here's what it looks like: 
+![image](https://github.com/jpooksy/demo-astro-project/assets/107123308/c908ee15-9db7-49e2-aa44-9a91fdf70ed5)
+
+
+2: Navitate to your Airflow deployment and add the following variables:
+
+   - `X-API-KEY`
+   - `X-API-SECRET`
+   - `URL`
+
+The values of these variables should be the values you generated in Paradime (step 1)
+<img width="1454" alt="image" src="https://github.com/jpooksy/demo-astro-project/assets/107123308/6eacdef2-c6cd-4e95-b5eb-b2f3cb856510">
+
+Note: 
+- If you are running airflow locally (ex. through Docker or Podmam) your airflow deployment URL might look something like: http://localhost:8080
+- If you are running airflow in the cloud (ex. through astronomer) your arflow deployment URL might look something like: sadflsdf000101getpnvrhv8.astronomer.run/d4rf5zb8
+
+
+
+2: You have an exisiting Airflow project (This project uses Astronomer.io to manage Apache Airflow)
+
+## Instructions
+
+1: Add the following files to your "dags" folder
+- `dags.py`
+- `paradime_schedules.py`
+
+2: within the `dags.py` file, update the following variables
+- `DAG_ID`: A unique identifier for the DAG.
+- `DAG_INTERVAL`: A cron schedule for when the DAG should run (e.g., "0 0 * * *").
+- `SCHEDULE_NAME`: Should match the name of the schedule in `paradime_schedules.yml` in the DBT folder.
+
+
+
+This repository provides the necessary python files to execute schedule dbt runs in Apache Airflow, including:
+
+1: **dags.py: **this file sets up an Airflow DAG that automates the triggering and monitoring of Paradime Bolt runs as part of a larger data pipeline. The configuration is customizable, and it demonstrates how to integrate Paradime's functionality into an Airflow workflow for data processing and automation. 
+
+The file provides instructions on how to set up the necessary environment variables for Airflow. Specifically, it mentions that you need to configure the following variables: 
+- `X-API-KEY`
+- `X-API-SECRET`
+- - `URL`
+
+You can custominze the following variables in your DAG configuration:
+
+Customize the following variables in your DAG configuration:
+
+- `DAG_ID`: A unique identifier for the DAG.
+- `DAG_INTERVAL`: The cron schedule for the DAG (e.g., "@daily").
+- `SCHEDULE_NAME`: Should match the name of the schedule in paradime_schedules.yml.
+
+These variables are typically obtained by generating an API key in Paradime's platform. You can generate an API key in you [Paradime account settings](https://app.paradime.io/account-settings/workspace)
+
+
+2: paradime_schedules.py
+
+
+
 
 Project Contents
 ================
