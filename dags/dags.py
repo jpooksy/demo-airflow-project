@@ -1,6 +1,7 @@
 # Example setup for running Paradime's Bolt in your own airflow DAG
 #
-# Airflow will need to be set up with the variables (please ask Paradime for these):
+# Airflow will need to be set up with the variables
+# find these variables by clicking "Generate API Key" here: https://app.paradime.io/account-settings/workspace
 # - X-API-KEY
 # - X-API-SECRET
 # - URL
@@ -28,6 +29,8 @@ from airflow.sensors.python import PythonSensor
 from paradime_schedules import run_schedule, get_run_status
 
 # Give an ID to your DAG - this is required by Airflow
+# You can leave the name as is, or you can change it to whatever you'd like
+# Example: change the DAG_ID value from "0_bolt_airflow" to "paradime_bolt_schedule_airflow"
 DAG_ID = "0_bolt_airflow"
 
 # This is the interval at which the DAG should run
@@ -37,7 +40,8 @@ DAG_INTERVAL = "@daily"
 
 # This is the schedule name that you want to run - the name
 # should match the schedule name in paradime_schedules.yaml
-SCHEDULE_NAME = "dbt_scheduled_runs"
+# Example: change the DAG_ID value from "my_schedule_name_in_paradime" to "dbt_scheduled_runs"
+SCHEDULE_NAME = "my_schedule_name_in_paradime"
 
 with DAG(
     dag_id=DAG_ID,
