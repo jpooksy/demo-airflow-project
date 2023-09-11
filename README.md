@@ -15,7 +15,6 @@ This is a starter kit for executing scheduled dbt runs (Bolt schedules) within A
 - [Details of Each Python File](#details-of-each-python-file)
    - [dags.py](#1-dagspy)
    - [paradime_schedules.py](#2-paradime_schedulespy)
-- [Deploy Your Project Locally Using Astronomer](#deploy-your-project-locally-using-astronomer)
 
 ## Prerequisites
 
@@ -99,12 +98,3 @@ The `paradime_schedules.py` Python script provides essential functions for inter
 - `_extract_gql_response(request: requests.Response, query_name: str, field: str) -> str`: A utility function used internally to extract relevant data from the GraphQL API response. It handles parsing and error checking.
 
 To use these functions effectively, users must configure their Apache Airflow environment with the necessary variables such as `URL`, `X-API-KEY`, and `X-API-SECRET`. This script enables the integration of Paradime's scheduling capabilities into custom Airflow workflows for automated task execution and monitoring.
-
-
-## Deploy Your Project Locally Using Astronomer
-
-Follow these steps to deploy your project locally using Astronomer:
-
-1. Start Airflow on your local machine by running `astro dev start`.
-
-This command will spin up four Docker containers on your machine, each for a different Air
