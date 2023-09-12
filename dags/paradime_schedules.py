@@ -35,7 +35,7 @@ def run_schedule(schedule_name: str, task_instance: TaskInstance) -> None:
 
 def get_run_status(task_instance: TaskInstance) -> bool:
     query = """
-    query Status($runId: Int!) {
+    query status($runId: Int!) {
       boltRunStatus(runId: $runId) {
         state
       }
