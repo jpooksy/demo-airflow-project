@@ -35,7 +35,8 @@ Follow these steps to set up and run your scheduled dbt runs with Paradime and A
 
 Generate a new API key in Paradime by clicking "Generate API Key" in the Paradime account settings. Here's what it looks like:
 
-![image](https://github.com/jpooksy/demo-astro-project/assets/107123308/c908ee15-9db7-49e2-aa44-9a91fdf70ed5)
+<img width="1511" alt="Screenshot 2023-09-12 at 11 09 35 AM" src="https://github.com/jpooksy/demo-airflow-project/assets/107123308/e9e906dd-7fda-4bef-9797-ff3e58e91fba">
+
 
 ### Step 2: Add Variables to Airflow
 
@@ -76,9 +77,7 @@ Save the updated `dags.py` file.
 Test and deploy your new scheduled dbt runs. Depending on your Airflow setup, you can test your new DAGs. For example, if you're using Astronomer, you can use the following command:
 
 - Astro example: astro deploy --dags
-- Here's what it looks like in the Airflow UI:
 
-![image](https://github.com/jpooksy/demo-astro-project/assets/107123308/3ca5750c-4b7c-4935-aef3-14c944bc3ed6)
 
 ## Details of Each Python File
 
