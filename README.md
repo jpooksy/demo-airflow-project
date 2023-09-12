@@ -13,8 +13,8 @@ This is a starter kit for executing scheduled dbt runs (Bolt schedules) within A
    - [Step 5: Save the Updated dags.py File](#step-5-save-the-updated-dagspy-file)
    - [Step 6: Test and Deploy Your DAGs](#step-6-test-and-deploy-your-dags)
 - [Details of Each Python File](#details-of-each-python-file)
-   - [dags.py](#1-dagspy)
-   - [paradime_schedules.py](#2-paradime_schedulespy)
+   - [dags.py](dagspy)
+   - [paradime_schedules.py](paradime_schedulespy)
 
 ## Prerequisites
 
@@ -31,47 +31,58 @@ This demo doesn't cover the initial setup of an Airflow project. If you need gui
 
 Follow these steps to set up and run your scheduled dbt runs with Paradime and Apache Airflow:
 
-1. Generate a new API key in Paradime by clicking "Generate API Key" in the [Paradime account settings](https://app.paradime.io/account-settings/workspace). Here's what it looks like:
+### Step 1: Generate an API Key in Paradime
+
+Generate a new API key in Paradime by clicking "Generate API Key" in the Paradime account settings. Here's what it looks like:
 
 ![image](https://github.com/jpooksy/demo-astro-project/assets/107123308/c908ee15-9db7-49e2-aa44-9a91fdf70ed5)
 
+### Step 2: Add Variables to Airflow
 
-2. Add the following variables to your Airflow deployment:
+Add the following variables to your Airflow deployment:
 
-   - `X-API-KEY`
-   - `X-API-SECRET`
-   - `URL`
+- `X-API-KEY`
+- `X-API-SECRET`
+- `URL`
 
-   The values of these variables should be the values you generated in Paradime (step 1)
-   <img width="1454" alt="image" src="https://github.com/jpooksy/demo-astro-project/assets/107123308/6eacdef2-c6cd-4e95-b5eb-b2f3cb856510">
+The values of these variables should be the values you generated in Paradime (step 1). 
+
+Note:
+- If you are running airflow locally (ex. through Docker or Podman) your airflow deployment URL might look something like: http://localhost:8080
+- If you are running airflow in the cloud (ex. through astronomer) your airflow deployment URL might look something like: sadflsdf000101getpnvrhv8.astronomer.run/d4rf5zb8
+
+### Step 3: Add Python Files to Your DAGs Folder
+
+Add the following Python files to your Airflow "dags" folder:
+
+- `dags.py`
+- `paradime_schedules.py`
+
+### Step 4: Update Variables in dags.py
+
+In the `dags.py` file, update the following variables:
+
+- `DAG_ID`: A unique identifier for the DAG (e.g., `DAG_ID = "0_bolt_airflow"`).
+- `DAG_INTERVAL`: A cron schedule for when the DAG should run (e.g., `DAG_INTERVAL = "@daily"`).
+- `SCHEDULE_NAME`: Should match the name of the schedule in `paradime_schedules.yml` in the DBT folder (e.g., `SCHEDULE_NAME = "my_schedule_name_in_paradime"`).
+
+### Step 5: Save the Updated dags.py File
+
+Save the updated `dags.py` file.
 
 
-   Note: 
-   - If you are running airflow locally (ex. through Docker or Podmam) your airflow deployment URL might look something like: http://localhost:8080
-   - If you are running airflow in the cloud (ex. through astronomer) your arflow deployment URL might look something like: sadflsdf000101getpnvrhv8.astronomer.run/d4rf5zb8
+### Step 6: Test and Deploy Your DAGs
 
-### Step 3: Add the following Python files to your Airflow "dags" folder:
+Test and deploy your new scheduled dbt runs. Depending on your Airflow setup, you can test your new DAGs. For example, if you're using Astronomer, you can use the following command:
 
-   - `dags.py`
-   - `paradime_schedules.py`
+- Astro example: astro deploy --dags
+- Here's what it looks like in the Airflow UI:
 
-4. In the `dags.py` file, update the following variables:
-
-   - `DAG_ID`: A unique identifier for the DAG (e.g., `DAG_ID = "0_bolt_airflow"`).
-   - `DAG_INTERVAL`: A cron schedule for when the DAG should run (e.g., `DAG_INTERVAL = "@daily"`).
-   - `SCHEDULE_NAME`: Should match the name of the schedule in `paradime_schedules.yml` in the DBT folder (e.g., `SCHEDULE_NAME = "my_schedule_name_in_paradime"`).
-     
-5. Save the updated `dags.py` file.
-
-6. Test and deploy your new scheduled dbt runs. Depending on your Airflow setup, you can test your new DAGs. For example, if you're using Astronomer, you can use the following command:
-   - Astro example: astro deploy --dags
-   - Here's what I looks like in the Airflow UI:
-      <img width="1507" alt="image" src="https://github.com/jpooksy/demo-astro-project/assets/107123308/3ca5750c-4b7c-4935-aef3-14c944bc3ed6">
-
+![image](https://github.com/jpooksy/demo-astro-project/assets/107123308/3ca5750c-4b7c-4935-aef3-14c944bc3ed6)
 
 ## Details of Each Python File
 
-### 1. dags.py
+### dags.py
 
 This Python file, `dags.py`, provides an example setup for running Paradime's Bolt within an Apache Airflow Directed Acyclic Graph (DAG). It demonstrates how to configure Airflow to interact with Paradime's API for scheduling and monitoring tasks. To use this DAG, Airflow needs specific variables such as `X-API-KEY`, `X-API-SECRET`, and `URL`. Additionally, you can customize global variables within the file, including `DAG_ID`, `DAG_INTERVAL`, and `SCHEDULE_NAME`.
 
@@ -87,7 +98,7 @@ This example serves as a template for incorporating Paradime's Bolt into custom 
 
 Remember to replace the variable values and schedule name according to your Paradime setup and use case before deploying this DAG.
 
-### 2. paradime_schedules.py
+### paradime_schedules.py
 
 The `paradime_schedules.py` Python script provides essential functions for interacting with Paradime's scheduling API within an Apache Airflow environment. It facilitates the execution and monitoring of scheduled tasks through the following functions:
 
