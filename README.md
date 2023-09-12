@@ -50,7 +50,7 @@ Follow these steps to set up and run your scheduled dbt runs with Paradime and A
    - If you are running airflow locally (ex. through Docker or Podmam) your airflow deployment URL might look something like: http://localhost:8080
    - If you are running airflow in the cloud (ex. through astronomer) your arflow deployment URL might look something like: sadflsdf000101getpnvrhv8.astronomer.run/d4rf5zb8
 
-3. Add the following Python files to your Airflow "dags" folder:
+### Step 3: Add the following Python files to your Airflow "dags" folder:
 
    - `dags.py`
    - `paradime_schedules.py`
