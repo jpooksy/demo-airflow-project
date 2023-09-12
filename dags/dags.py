@@ -41,7 +41,7 @@ DAG_INTERVAL = "@daily"
 # This is the schedule name that you want to run - the name
 # should match the schedule name in paradime_schedules.yaml
 # Example: change the DAG_ID value from "my_schedule_name_in_paradime" to "dbt_scheduled_runs"
-SCHEDULE_NAME = "my_schedule_name_in_paradime"
+SCHEDULE_NAME = "dbt_scheduled_runs"
 
 with DAG(
     dag_id=DAG_ID,
