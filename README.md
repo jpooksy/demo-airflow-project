@@ -8,7 +8,7 @@ This is a starter kit for executing scheduled dbt runs (Bolt schedules) within A
 - [Instructions](#instructions)
    - [Step 1: Generate an API Key in Paradime](#step-1-generate-an-api-key-in-paradime)
    - [Step 2: Add Variables to Airflow](#step-2-add-variables-to-airflow)
-   - [Step 3: Add Python Files to Your DAGs Folder](#step-3-add-python-files-to-your-dags-folder)
+   - [Step 3: Add Python Files to Your DAGs Folder]([#step-3-add-python-files-to-your-dags-folder](https://github.com/jpooksy/demo-airflow-project/blob/main/README.md#step-3-add-python-files-to-your-dags-folder))
    - [Step 4: Update Variables in dags.py](#step-4-update-variables-in-dagspy)
    - [Step 5: Save the Updated dags.py File](#step-5-save-the-updated-dagspy-file)
    - [Step 6: Test and Deploy Your DAGs](#step-6-test-and-deploy-your-dags)
